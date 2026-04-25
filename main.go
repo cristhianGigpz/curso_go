@@ -13,24 +13,67 @@ func main() {
 	// esProgramador := true
 	// salario := 300.70
 	// const PI = 3.14159
-	Bienvenida := "Hola, bienvenido a Go!"
-	var nombre string
-	//var edad int
-	var numero1, numero2, resultado int
+	// Bienvenida := "Hola, bienvenido a Go!"
+	// var nombre string
+	// //var edad int
+	// var numero1, numero2, resultado int
 
-	fmt.Println(Bienvenida)
-	fmt.Print("Por favor, ingresa tu nombre: ")
-	fmt.Scanln(&nombre)
-	fmt.Print("Por favor, ingresa el primer número 1: ")
-	fmt.Scanln(&numero1)
-	fmt.Print("Por favor, ingresa el segundo número 2: ")
-	fmt.Scanln(&numero2)
-	// fmt.Print("Por favor, ingresa tu edad: ")
-	// fmt.Scanln(&edad)
-	resultado = numero1 + numero2
-	fmt.Println("El resultado de la suma es: ", resultado)
+	// fmt.Println(Bienvenida)
+	// fmt.Print("Por favor, ingresa tu nombre: ")
+	// fmt.Scanln(&nombre)
+	// fmt.Print("Por favor, ingresa el primer número 1: ")
+	// fmt.Scanln(&numero1)
+	// fmt.Print("Por favor, ingresa el segundo número 2: ")
+	// fmt.Scanln(&numero2)
+	// // fmt.Print("Por favor, ingresa tu edad: ")
+	// // fmt.Scanln(&edad)
+	// resultado = numero1 + numero2
+	// fmt.Println("El resultado de la suma es: ", resultado)
 	//fmt.Println("Hola", nombre, "tienes", edad, "años. ¡Bienvenido a Go!")
 	//fmt.Println("Hello, World! 😎\n soy gigpz")
 	//fmt.Println(nombre, edad, esProgramador, salario, PI)
+
+	// a := 20
+	// b := 10
+
+	// fmt.Println("Operadores Aritméticos")
+	// fmt.Println("Suma:", a+b)
+	// fmt.Println("Resta:", a-b)
+	// fmt.Println("Multiplicación:", a*b)
+	// fmt.Println("División:", a/b)
+	// fmt.Println("Módulo:", a%b) // 7 / 3 = 1, 5 / 2 = 2, 1
+
+	// fmt.Println("Operadores Relacionales")
+	// fmt.Println("a es igual a b:", a == b)
+	// fmt.Println("a es diferente de b:", a != b)
+	// fmt.Println("a es mayor que b:", a > b)
+	// fmt.Println("a es menor que b:", a < b)
+	// fmt.Println("a es mayor o igual que b:", a >= b)
+	// fmt.Println("a es menor o igual que b:", a <= b)
+
+	// fmt.Println("Operadores Lógicos")
+	// fmt.Println("a es mayor que 15 y b es menor que 20:", a > 15 && b < 20) //AND
+	// fmt.Println("a es mayor que 25 o b es menor que 15:", a > 25 || b < 15) //OR
+	// fmt.Println("No es cierto que a sea menor que b:", !(a < b))            //NOT
+
+	// edad := 17 //asignacion
+	// tieneDni := true
+
+	// puedeIngresar := edad >= 18 && tieneDni
+	// fmt.Println("¿Puede ingresar al evento?", puedeIngresar)
+	var edad int
+	esVIP := false
+
+	fmt.Print("Que edad tienes ?:")
+	fmt.Scan(&edad)
+
+	puedeIngresar := edad >= 18 || esVIP
+	fmt.Println("¿Puede ingresar al evento?", puedeIngresar)
+
+	//RESTOS PARA TI//
+	//to 1: Calculadora básica
+	// Reto 2: Número par o impar
+	// Reto 3: Mayor de 3 números
+	// Reto 4: Simula un login simple: usuario == "admin" && password == "1234"
 
 }
