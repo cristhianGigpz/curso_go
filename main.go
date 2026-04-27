@@ -61,19 +61,90 @@ func main() {
 
 	// puedeIngresar := edad >= 18 && tieneDni
 	// fmt.Println("¿Puede ingresar al evento?", puedeIngresar)
+	// var edad int
+	// esVIP := false
+
+	// fmt.Print("Que edad tienes ?:")
+	// fmt.Scan(&edad)
+
+	// puedeIngresar := edad >= 18 || esVIP
+	// fmt.Println("¿Puede ingresar al evento?", puedeIngresar)
+
+	/////Conversión de tipos///////
+
+	// var numero int = 10
+	// var decimal float64 = float64(numero) + 0.12
+	// fmt.Println(decimal)
+
+	//Tabla de verdad de AND
+	// A     B     A AND B
+	// true  true  true
+	// true  false false
+	// false true  false
+	// false false false
+
+	//Tabla de verdad de OR
+	// A     B     A OR B
+	// true  true  true
+	// true  false true
+	// false true  true
+	// false false false
+
+	//Tabla de verdad de NOT
+	// A     NOT A
+	// true  false
+	// false true
+
+	//Reto 1: Calculadora básica
+	var num1, num2 int
+	fmt.Print("Ingresa el primer número: ")
+	fmt.Scan(&num1)
+	fmt.Print("Ingresa el segundo número: ")
+	fmt.Scan(&num2)
+	fmt.Println("Suma:", num1+num2)
+	fmt.Println("Resta:", num1-num2)
+	fmt.Println("Multiplicación:", num1*num2)
+	fmt.Println("División Entera:", num1/num2)
+	fmt.Println("División Decimal:", float64(num1)/float64(num2))
+	fmt.Println("Módulo:", num1%num2)
+
+	//Reto 2: Número par o impar
+	var numero int
+	fmt.Print("Ingresa un número para verificar si es par o impar: ")
+	fmt.Scan(&numero)
+
+	esPar := numero%2 == 0
+	fmt.Println("¿Es un número par?", esPar)
+
+	//Reto 3: Validación de acceso (realista) Edad ≥ 18 && tieneDNI == true || esVIP == true
 	var edad int
-	esVIP := false
-
-	fmt.Print("Que edad tienes ?:")
+	var tieneDNI bool
+	var esVIP bool
+	fmt.Print("Ingresa tu edad: ")
 	fmt.Scan(&edad)
+	fmt.Print("¿Tienes DNI? (true/false): ")
+	fmt.Scan(&tieneDNI)
+	fmt.Print("¿Eres VIP? (true/false): ")
+	fmt.Scan(&esVIP)
+	accesoPermitido := (edad >= 18 && tieneDNI) || esVIP
+	fmt.Println("¿Acceso permitido?", accesoPermitido)
 
-	puedeIngresar := edad >= 18 || esVIP
-	fmt.Println("¿Puede ingresar al evento?", puedeIngresar)
+	//Reto 4: Reto 4: Simula un login simple: usuario == "admin" && password == "1234"
+	usuario := "admin"
+	password := "1234"
+	loginExitoso := usuario == "admin" && password == "1234"
+	fmt.Println("¿Login exitoso?", loginExitoso)
 
-	//RESTOS PARA TI//
-	//to 1: Calculadora básica
-	// Reto 2: Número par o impar
-	// Reto 3: Mayor de 3 números
-	// Reto 4: Simula un login simple: usuario == "admin" && password == "1234"
+	//Reto 5: Mayor de 3 números (Pide 3 números y muestra el mayor usando operadores.)
+	var a, b, c int
+	fmt.Print("Ingresa el primer número: ")
+	fmt.Scan(&a)
+	fmt.Print("Ingresa el segundo número: ")
+	fmt.Scan(&b)
+	fmt.Print("Ingresa el tercer número: ")
+	fmt.Scan(&c)
+
+	mayorNumero := (a > b && a > c) || (b > a && b > c) || (c > a && c > b)
+	fmt.Println("¿Cuál es el mayor?", mayorNumero)
 
 }
