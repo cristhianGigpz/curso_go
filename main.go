@@ -95,45 +95,72 @@ func main() {
 	// true  false
 	// false true
 
-	//Reto 1: Calculadora básica
-	var num1, num2 int
-	fmt.Print("Ingresa el primer número: ")
-	fmt.Scan(&num1)
-	fmt.Print("Ingresa el segundo número: ")
-	fmt.Scan(&num2)
-	fmt.Println("Suma:", num1+num2)
-	fmt.Println("Resta:", num1-num2)
-	fmt.Println("Multiplicación:", num1*num2)
-	fmt.Println("División Entera:", num1/num2)
-	fmt.Println("División Decimal:", float64(num1)/float64(num2))
-	fmt.Println("Módulo:", num1%num2)
+	// //Reto 1: Calculadora básica
+	// var num1, num2 int
+	// fmt.Print("Ingresa el primer número: ")
+	// fmt.Scan(&num1)
+	// fmt.Print("Ingresa el segundo número: ")
+	// fmt.Scan(&num2)
+	// fmt.Println("Suma:", num1+num2)
+	// fmt.Println("Resta:", num1-num2)
+	// fmt.Println("Multiplicación:", num1*num2)
+	// fmt.Println("División Entera:", num1/num2)
+	// fmt.Println("División Decimal:", float64(num1)/float64(num2))
+	// fmt.Println("Módulo:", num1%num2)
 
-	//Reto 2: Número par o impar
-	var numero int
-	fmt.Print("Ingresa un número para verificar si es par o impar: ")
-	fmt.Scan(&numero)
+	// //Reto 2: Número par o impar
+	// var numero int
+	// fmt.Print("Ingresa un número para verificar si es par o impar: ")
+	// fmt.Scan(&numero)
 
-	esPar := numero%2 == 0
-	fmt.Println("¿Es un número par?", esPar)
+	// esPar := numero%2 == 0
+	// fmt.Println("¿Es un número par?", esPar)
 
-	//Reto 3: Validación de acceso (realista) Edad ≥ 18 && tieneDNI == true || esVIP == true
+	// //Reto 3: Validación de acceso (realista) Edad ≥ 18 && tieneDNI == true || esVIP == true
+	// var edad int
+	// var tieneDNI bool
+	// var esVIP bool
+	// fmt.Print("Ingresa tu edad: ")
+	// fmt.Scan(&edad)
+	// fmt.Print("¿Tienes DNI? (true/false): ")
+	// fmt.Scan(&tieneDNI)
+	// fmt.Print("¿Eres VIP? (true/false): ")
+	// fmt.Scan(&esVIP)
+	// accesoPermitido := (edad >= 18 && tieneDNI) || esVIP
+	// fmt.Println("¿Acceso permitido?", accesoPermitido)
+
+	// //Reto 4: Reto 4: Simula un login simple: usuario == "admin" && password == "1234"
+	// usuario := "admin"
+	// password := "1234"
+	// loginExitoso := usuario == "admin" && password == "1234"
+	// fmt.Println("¿Login exitoso?", loginExitoso)
+
+	// //Reto 5: Mayor de 3 números (Pide 3 números y muestra el mayor usando operadores.)
+	// var a, b, c int
+	// fmt.Print("Ingresa el primer número: ")
+	// fmt.Scan(&a)
+	// fmt.Print("Ingresa el segundo número: ")
+	// fmt.Scan(&b)
+	// fmt.Print("Ingresa el tercer número: ")
+	// fmt.Scan(&c)
+
+	// mayorNumero := (a > b && a > c) || (b > a && b > c) || (c > a && c > b)
+	// fmt.Println("¿Cuál es el mayor?", mayorNumero)
+
+	/////////Módulo 4: Estructuras de Control en Go/////////
+	//1 Condicionales: if, else if, else
+
 	var edad int
-	var tieneDNI bool
-	var esVIP bool
 	fmt.Print("Ingresa tu edad: ")
 	fmt.Scan(&edad)
-	fmt.Print("¿Tienes DNI? (true/false): ")
-	fmt.Scan(&tieneDNI)
-	fmt.Print("¿Eres VIP? (true/false): ")
-	fmt.Scan(&esVIP)
-	accesoPermitido := (edad >= 18 && tieneDNI) || esVIP
-	fmt.Println("¿Acceso permitido?", accesoPermitido)
 
-	//Reto 4: Reto 4: Simula un login simple: usuario == "admin" && password == "1234"
-	usuario := "admin"
-	password := "1234"
-	loginExitoso := usuario == "admin" && password == "1234"
-	fmt.Println("¿Login exitoso?", loginExitoso)
+	if edad <= 12 {
+		fmt.Println("Eres un niño.")
+	} else if edad <= 18 {
+		fmt.Println("Eres un adolescente.")
+	} else {
+		fmt.Println("Eres mayor de edad.")
+	}
 
 	//Reto 5: Mayor de 3 números (Pide 3 números y muestra el mayor usando operadores.)
 	var a, b, c int
@@ -144,7 +171,46 @@ func main() {
 	fmt.Print("Ingresa el tercer número: ")
 	fmt.Scan(&c)
 
-	mayorNumero := (a > b && a > c) || (b > a && b > c) || (c > a && c > b)
-	fmt.Println("¿Cuál es el mayor?", mayorNumero)
+	if a > b && a > c {
+		fmt.Println("El mayor es a:", a)
+	} else if b > a && b > c {
+		fmt.Println("El mayor es b:", b)
+	} else {
+		fmt.Println("El mayor es: c:", c)
+	}
+
+	//2 switch
+	var dia int
+	fmt.Print("Ingresa un número del 1 al 7 para conocer el día de la semana: ")
+	fmt.Scan(&dia)
+
+	switch dia {
+	case 1:
+		fmt.Println("Lunes")
+	case 2:
+		fmt.Println("Martes")
+	case 3:
+		fmt.Println("Miércoles")
+	case 4:
+		fmt.Println("Jueves")
+	case 5:
+		fmt.Println("Viernes")
+	case 6:
+		fmt.Println("Sábado")
+	case 7:
+		fmt.Println("Domingo")
+	default:
+		fmt.Println("Número inválido")
+	}
+
+	edad2 := 17
+	switch {
+	case edad2 < 13:
+		fmt.Println("Eres un niño.")
+	case edad2 < 18:
+		fmt.Println("Eres un adolescente.")
+	default:
+		fmt.Println("Eres mayor de edad.")
+	}
 
 }
