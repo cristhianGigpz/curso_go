@@ -150,67 +150,118 @@ func main() {
 	/////////Módulo 4: Estructuras de Control en Go/////////
 	//1 Condicionales: if, else if, else
 
-	var edad int
-	fmt.Print("Ingresa tu edad: ")
-	fmt.Scan(&edad)
+	// var edad int
+	// fmt.Print("Ingresa tu edad: ")
+	// fmt.Scan(&edad)
 
-	if edad <= 12 {
-		fmt.Println("Eres un niño.")
-	} else if edad <= 18 {
-		fmt.Println("Eres un adolescente.")
-	} else {
-		fmt.Println("Eres mayor de edad.")
+	// if edad <= 12 {
+	// 	fmt.Println("Eres un niño.")
+	// } else if edad <= 18 {
+	// 	fmt.Println("Eres un adolescente.")
+	// } else {
+	// 	fmt.Println("Eres mayor de edad.")
+	// }
+
+	// //Reto 5: Mayor de 3 números (Pide 3 números y muestra el mayor usando operadores.)
+	// var a, b, c int
+	// fmt.Print("Ingresa el primer número: ")
+	// fmt.Scan(&a)
+	// fmt.Print("Ingresa el segundo número: ")
+	// fmt.Scan(&b)
+	// fmt.Print("Ingresa el tercer número: ")
+	// fmt.Scan(&c)
+
+	// if a > b && a > c {
+	// 	fmt.Println("El mayor es a:", a)
+	// } else if b > a && b > c {
+	// 	fmt.Println("El mayor es b:", b)
+	// } else {
+	// 	fmt.Println("El mayor es: c:", c)
+	// }
+
+	// //2 switch
+	// var dia int
+	// fmt.Print("Ingresa un número del 1 al 7 para conocer el día de la semana: ")
+	// fmt.Scan(&dia)
+
+	// switch dia {
+	// case 1:
+	// 	fmt.Println("Lunes")
+	// case 2:
+	// 	fmt.Println("Martes")
+	// case 3:
+	// 	fmt.Println("Miércoles")
+	// case 4:
+	// 	fmt.Println("Jueves")
+	// case 5:
+	// 	fmt.Println("Viernes")
+	// case 6:
+	// 	fmt.Println("Sábado")
+	// case 7:
+	// 	fmt.Println("Domingo")
+	// default:
+	// 	fmt.Println("Número inválido")
+	// }
+
+	// edad2 := 17
+	// switch {
+	// case edad2 < 13:
+	// 	fmt.Println("Eres un niño.")
+	// case edad2 < 18:
+	// 	fmt.Println("Eres un adolescente.")
+	// default:
+	// 	fmt.Println("Eres mayor de edad.")
+	// }
+
+	//2 Ciclos o repetitivos: for, while (simulado con for), do-while (simulado con for)
+	//for → cuando sabes cuántas veces repetir
+	//while → cuando repites mientras se cumpla una condición
+
+	// for i := 0; i < 5; i++ {
+	// 	fmt.Println("Iteración número:", i)
+	// }
+
+	// contador := 0
+	// for contador < 5 {
+	// 	fmt.Println("Contador:", contador)
+	// 	contador += 1
+	// }
+
+	// for i := 1; i <= 10; i++ {
+	// 	fmt.Println("Número:", i)
+	// 	if i == 5 {
+	// 		break //sale del ciclo
+	// 	}
+	// }
+
+	// for i := 1; i <= 10; i++ {
+	// 	if i%2 != 0 {
+	// 		continue //salta a la siguiente iteración
+	// 	}
+	// 	fmt.Println("Número par:", i)
+	// }
+	//infinito
+	// for {
+	// 	fmt.Println("Hola")
+	// }
+
+	var numero, limite int
+	fmt.Print("Ingresa un número para mostrar su tabla de multiplicar: ")
+	fmt.Scan(&numero)
+	fmt.Print("Ingrese numero limite de multiplicacion: ")
+	fmt.Scan(&limite)
+
+	for i := 1; i <= limite; i++ {
+		fmt.Println("multipliacion de", numero, "x", i, "=", numero*i)
 	}
-
-	//Reto 5: Mayor de 3 números (Pide 3 números y muestra el mayor usando operadores.)
-	var a, b, c int
-	fmt.Print("Ingresa el primer número: ")
-	fmt.Scan(&a)
-	fmt.Print("Ingresa el segundo número: ")
-	fmt.Scan(&b)
-	fmt.Print("Ingresa el tercer número: ")
-	fmt.Scan(&c)
-
-	if a > b && a > c {
-		fmt.Println("El mayor es a:", a)
-	} else if b > a && b > c {
-		fmt.Println("El mayor es b:", b)
-	} else {
-		fmt.Println("El mayor es: c:", c)
-	}
-
-	//2 switch
-	var dia int
-	fmt.Print("Ingresa un número del 1 al 7 para conocer el día de la semana: ")
-	fmt.Scan(&dia)
-
-	switch dia {
-	case 1:
-		fmt.Println("Lunes")
-	case 2:
-		fmt.Println("Martes")
-	case 3:
-		fmt.Println("Miércoles")
-	case 4:
-		fmt.Println("Jueves")
-	case 5:
-		fmt.Println("Viernes")
-	case 6:
-		fmt.Println("Sábado")
-	case 7:
-		fmt.Println("Domingo")
-	default:
-		fmt.Println("Número inválido")
-	}
-
-	edad2 := 17
-	switch {
-	case edad2 < 13:
-		fmt.Println("Eres un niño.")
-	case edad2 < 18:
-		fmt.Println("Eres un adolescente.")
-	default:
-		fmt.Println("Eres mayor de edad.")
-	}
+	// Reto 1:Login con 3 intentos admin, 1234 - usar for
+	// Reto 2: Menú interactivo
+	// // 1. Saludar
+	// // 2. Mostrar hora
+	// // 3. Salir
+	// // Usar for infinito + switch|if.
+	// Reto 3: Suma acumulada
+	// // Pedir números hasta que el usuario escriba 0.
+	// // Luego mostrar total sumado.
 
 }
