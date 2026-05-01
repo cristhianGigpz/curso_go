@@ -2,10 +2,44 @@ package main
 
 import (
 	"fmt"
-	"time"
 )
 
+func saludar(nombre string) {
+	fmt.Println("Hola", nombre, "bienvenido a Go!")
+}
+
+func sumar(a, b int) int {
+	return a + b
+}
+
+func restar(a, b int) int {
+	return a - b
+}
+
+func multiplicar(a, b int) int {
+	return a * b
+}
+
+func dividir(a, b float64) float64 {
+	if b == 0 {
+		fmt.Println("Error: No se puede dividir por cero.")
+		return 0
+	}
+	return a / b
+}
+
 func main() {
+
+	saludar("cristhian")
+
+	fmt.Println("Suma 1:", sumar(10, 20))
+
+	fmt.Println("Resta 1:", restar(10, 5))
+
+	fmt.Println("Multiplicación 1:", multiplicar(5, 5))
+
+	fmt.Println("División 1:", dividir(10.8, 2))
+	fmt.Println("División 2:", dividir(20, 0))
 	// var nombre string = "Gustavo"
 	// var edad int = 30
 	// var esProgramador bool = true
@@ -248,85 +282,88 @@ func main() {
 	// 	fmt.Println("Hola")
 	// }
 
-	var numero, limite int
-	fmt.Print("Ingresa un número para mostrar su tabla de multiplicar: ")
-	fmt.Scan(&numero)
-	fmt.Print("Ingrese numero limite de multiplicacion: ")
-	fmt.Scan(&limite)
+	// var numero, limite int
+	// fmt.Print("Ingresa un número para mostrar su tabla de multiplicar: ")
+	// fmt.Scan(&numero)
+	// fmt.Print("Ingrese numero limite de multiplicacion: ")
+	// fmt.Scan(&limite)
 
-	for i := 1; i <= limite; i++ {
-		fmt.Println("multipliacion de", numero, "x", i, "=", numero*i)
-	}
-	fmt.Println("==============================================")
-	// Reto 1:Login con 3 intentos admin, 1234 - usar for
-	fmt.Println("Bienvenido a el sistema ingrese sus credenciales")
-	var usuario, password string
-	for intentos := 1; intentos <= 3; intentos++ {
-		fmt.Print("Usuario: ")
-		fmt.Scan(&usuario)
-		fmt.Print("Contraseña: ")
-		fmt.Scan(&password)
+	// for i := 1; i <= limite; i++ {
+	// 	fmt.Println("multipliacion de", numero, "x", i, "=", numero*i)
+	// }
+	// fmt.Println("==============================================")
+	// // Reto 1:Login con 3 intentos admin, 1234 - usar for
+	// fmt.Println("Bienvenido a el sistema ingrese sus credenciales")
+	// var usuario, password string
+	// for intentos := 1; intentos <= 3; intentos++ {
+	// 	fmt.Print("Usuario: ")
+	// 	fmt.Scan(&usuario)
+	// 	fmt.Print("Contraseña: ")
+	// 	fmt.Scan(&password)
 
-		if usuario == "admin" && password == "1234" {
-			fmt.Println("Login exitoso")
-			break
-		} else {
-			fmt.Println("Credenciales incorrectas, intento", intentos, "de 3.")
-		}
-	}
-	fmt.Println("==============================================")
+	// 	if usuario == "admin" && password == "1234" {
+	// 		fmt.Println("Login exitoso")
+	// 		break
+	// 	} else {
+	// 		fmt.Println("Credenciales incorrectas, intento", intentos, "de 3.")
+	// 	}
+	// }
+	// fmt.Println("==============================================")
+
 	// Reto 2: Menú interactivo
 	// // 1. Saludar
 	// // 2. Mostrar hora
 	// // 3. Salir
 	// // Usar for infinito + switch|if.
-	for {
-		fmt.Println("1. Saludar")
-		fmt.Println("2. Mostrar hora")
-		fmt.Println("3. Salir")
-		fmt.Print("Selecciona una opción: ")
-		var opcion int
-		fmt.Scan(&opcion)
+	// for {
+	// 	fmt.Println("1. Saludar")
+	// 	fmt.Println("2. Mostrar hora")
+	// 	fmt.Println("3. Salir")
+	// 	fmt.Print("Selecciona una opción: ")
+	// 	var opcion int
+	// 	fmt.Scan(&opcion)
 
-		if opcion == 1 {
-			fmt.Println("Hola!")
-		} else if opcion == 2 {
-			fmt.Println("La hora actual es:", time.Now().Format("15:04:05"))
-		} else if opcion == 3 {
-			fmt.Println("Saliendo...")
-			break
-		} else {
-			fmt.Println("Opción inválida")
-		}
-		// switch opcion {
-		// case 1:
-		// 	fmt.Println("Hola!")
-		// case 2:
-		// 	fmt.Println("La hora actual es:", time.Now().Format("15:04:05"))
-		// case 3:
-		// 	fmt.Println("Saliendo...")
-		// 	return
-		// default:
-		// 	fmt.Println("Opción inválida")
-		// }
-	}
-	fmt.Println("==============================================")
+	// 	if opcion == 1 {
+	// 		fmt.Println("Hola!")
+	// 	} else if opcion == 2 {
+	// 		fmt.Println("La hora actual es:", time.Now().Format("15:04:05"))
+	// 	} else if opcion == 3 {
+	// 		fmt.Println("Saliendo...")
+	// 		break
+	// 	} else {
+	// 		fmt.Println("Opción inválida")
+	// 	}
+	// 	// switch opcion {
+	// 	// case 1:
+	// 	// 	fmt.Println("Hola!")
+	// 	// case 2:
+	// 	// 	fmt.Println("La hora actual es:", time.Now().Format("15:04:05"))
+	// 	// case 3:
+	// 	// 	fmt.Println("Saliendo...")
+	// 	// 	return
+	// 	// default:
+	// 	// 	fmt.Println("Opción inválida")
+	// 	// }
+	// }
+
+	// fmt.Println("==============================================")
 	// Reto 3: Suma acumulada
 	// // Pedir números hasta que el usuario escriba 0.
 	// // Luego mostrar total sumado.
-	fmt.Println("Ingrese números para sumar (0 para terminar):")
-	var suma, numero2 int
-	for {
-		fmt.Print("Número: ")
-		fmt.Scan(&numero2)
-		if numero2 == 0 {
-			break
-		}
-		suma += numero2
-	}
-	fmt.Println("Total sumado:", suma)
+	// fmt.Println("Ingrese números para sumar (0 para terminar):")
+	// var suma, numero2 int
+	// for {
+	// 	fmt.Print("Número: ")
+	// 	fmt.Scan(&numero2)
+	// 	if numero2 == 0 {
+	// 		break
+	// 	}
+	// 	suma += numero2
+	// }
+	// fmt.Println("Total sumado:", suma)
 
-	fmt.Println("==============================================")
+	// fmt.Println("==============================================")
+
 	// Mini Proyecto del módulo
 	// Sistema de cajero simple
 	// 1. Ver saldo
@@ -339,43 +376,43 @@ func main() {
 	// switch
 	// if
 
-	var saldo float64 = 0.00
-	for {
-		fmt.Println("============Bienvenido al Cajero Automatico===============")
-		fmt.Println("1. Ver saldo")
-		fmt.Println("2. Depositar")
-		fmt.Println("3. Retirar")
-		fmt.Println("4. Salir")
-		fmt.Print("Selecciona una opción: ")
+	// var saldo float64 = 0.00
+	// for {
+	// 	fmt.Println("============Bienvenido al Cajero Automatico===============")
+	// 	fmt.Println("1. Ver saldo")
+	// 	fmt.Println("2. Depositar")
+	// 	fmt.Println("3. Retirar")
+	// 	fmt.Println("4. Salir")
+	// 	fmt.Print("Selecciona una opción: ")
 
-		var opcion int
-		fmt.Scan(&opcion)
+	// 	var opcion int
+	// 	fmt.Scan(&opcion)
 
-		switch opcion {
-		case 1:
-			fmt.Println("Tu saldo actual es: $", saldo)
-		case 2:
-			var deposito float64
-			fmt.Print("Ingrese el monto a depositar: ")
-			fmt.Scan(&deposito)
-			saldo += deposito
-			fmt.Println("Depósito exitoso. Nuevo saldo:", saldo)
-		case 3:
-			var retiro float64
-			fmt.Print("Ingrese el monto a retirar: ")
-			fmt.Scan(&retiro)
-			if retiro > saldo {
-				fmt.Println("Saldo insuficiente.")
-			} else {
-				saldo -= retiro
-				fmt.Println("Retiro exitoso. Nuevo saldo:", saldo)
-			}
-		case 4:
-			fmt.Println("Saliendo...")
-			return
-		default:
-			fmt.Println("Opción inválida")
-		}
+	// 	switch opcion {
+	// 	case 1:
+	// 		fmt.Println("Tu saldo actual es: $", saldo)
+	// 	case 2:
+	// 		var deposito float64
+	// 		fmt.Print("Ingrese el monto a depositar: ")
+	// 		fmt.Scan(&deposito)
+	// 		saldo += deposito
+	// 		fmt.Println("Depósito exitoso. Nuevo saldo:", saldo)
+	// 	case 3:
+	// 		var retiro float64
+	// 		fmt.Print("Ingrese el monto a retirar: ")
+	// 		fmt.Scan(&retiro)
+	// 		if retiro > saldo {
+	// 			fmt.Println("Saldo insuficiente.")
+	// 		} else {
+	// 			saldo -= retiro
+	// 			fmt.Println("Retiro exitoso. Nuevo saldo:", saldo)
+	// 		}
+	// 	case 4:
+	// 		fmt.Println("Saliendo...")
+	// 		return
+	// 	default:
+	// 		fmt.Println("Opción inválida")
+	// 	}
 
-	}
+	// }
 }
