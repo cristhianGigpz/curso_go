@@ -28,6 +28,29 @@ func dividir(a, b float64) float64 {
 	return a / b
 }
 
+func operaciones(a, b int) (int, int) {
+	return a + b, a - b
+}
+
+func dividir2(a, b float64) (float64, string) {
+	if b == 0 {
+		return 0, "Error: No se puede dividir por cero."
+	}
+	return a / b, "División exitosa"
+}
+
+var x int = 10
+var y int = 20
+
+func inicial() {
+	y = 0
+}
+
+func prueba() {
+	x := 15 + y
+	fmt.Println("Valor de x:", x)
+}
+
 func main() {
 
 	saludar("cristhian")
@@ -40,6 +63,22 @@ func main() {
 
 	fmt.Println("División 1:", dividir(10.8, 2))
 	fmt.Println("División 2:", dividir(20, 0))
+
+	suma, _ := operaciones(15, 5)
+	fmt.Println("Suma 2:", suma)
+	// fmt.Println("Resta 2:", resta)
+
+	_, mensaje := dividir2(20, 5)
+	//fmt.Println("División 3:", resultado)
+	fmt.Println(mensaje)
+
+	prueba()
+
+	// Retos:
+	// -Convertidor de moneda: solesADolares(monto float64) float64
+	// -Sistema escolar: evaluarNota(nota int) string
+	// -Login reutilizable: login(usuario string, password string) bool
+
 	// var nombre string = "Gustavo"
 	// var edad int = 30
 	// var esProgramador bool = true
