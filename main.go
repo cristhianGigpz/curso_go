@@ -51,33 +51,123 @@ func prueba() {
 	fmt.Println("Valor de x:", x)
 }
 
+// Retos:
+// -Convertidor de moneda: solesADolares(monto float64) float64
+func solesADolares(monto float64) float64 {
+	const tasaCambio = 3.51 // Ejemplo de tasa de cambio
+	return monto * tasaCambio
+}
+
+// -Sistema escolar: evaluarNota(nota int) string
+func evaluarNota(nota int) string {
+	if nota >= 18 {
+		return "Excelente"
+	} else if nota >= 14 {
+		return "Muy Bien"
+	} else if nota >= 11 {
+		return "Bien"
+	} else {
+		return "Insuficiente"
+	}
+}
+
+// -Login reutilizable: login(usuario string, password string) bool
+func login(usuario string, password string) bool {
+	return usuario == "admin" && password == "1234"
+}
+
+// MINI PROYECTO DEL MÓDULO
+//  Sistema bancario modular
+
+// Menú:
+
+// 1. Consultar saldo
+// 2. Depositar
+// 3. Retirar
+// 4. Salir
+
+var saldo float64 = 0.00
+
+func menu() {
+	for {
+		fmt.Println("============Bienvenido al Cajero Automatico===============")
+		fmt.Println("1. Ver saldo")
+		fmt.Println("2. Depositar")
+		fmt.Println("3. Retirar")
+		fmt.Println("4. Salir")
+		fmt.Print("Selecciona una opción: ")
+		var opcion int
+		fmt.Scan(&opcion)
+		switch opcion {
+		case 1:
+			verSaldo()
+		case 2:
+			depositar()
+		case 3:
+			retirar()
+		case 4:
+			fmt.Println("Gracias por usar el Cajero Automático. ¡Hasta luego!")
+			return
+		default:
+			fmt.Println("Opción inválida. Por favor, selecciona una opción válida.")
+		}
+	}
+}
+
+func depositar() {
+	fmt.Print("Ingrese el monto a depositar: ")
+	var deposito float64
+	fmt.Scan(&deposito)
+	saldo += deposito
+	fmt.Println("Depósito exitoso. Nuevo saldo:", saldo)
+}
+
+func retirar() {
+	fmt.Print("Ingrese el monto a retirar: ")
+	var retiro float64
+	fmt.Scan(&retiro)
+	if retiro > saldo {
+		fmt.Println("Saldo insuficiente.")
+	} else {
+		saldo -= retiro
+		fmt.Println("Retiro exitoso. Nuevo saldo:", saldo)
+	}
+}
+
+func verSaldo() {
+	fmt.Println("Tu saldo actual es: $", saldo)
+}
+
 func main() {
 
 	saludar("cristhian")
+	menu()
+	fmt.Println("====================fin del programa==========================")
+	// fmt.Println("Suma 1:", sumar(10, 20))
 
-	fmt.Println("Suma 1:", sumar(10, 20))
+	// fmt.Println("Resta 1:", restar(10, 5))
 
-	fmt.Println("Resta 1:", restar(10, 5))
+	// fmt.Println("Multiplicación 1:", multiplicar(5, 5))
 
-	fmt.Println("Multiplicación 1:", multiplicar(5, 5))
+	// fmt.Println("División 1:", dividir(10.8, 2))
+	// fmt.Println("División 2:", dividir(20, 0))
 
-	fmt.Println("División 1:", dividir(10.8, 2))
-	fmt.Println("División 2:", dividir(20, 0))
+	// suma, _ := operaciones(15, 5)
+	// fmt.Println("Suma 2:", suma)
+	// // fmt.Println("Resta 2:", resta)
 
-	suma, _ := operaciones(15, 5)
-	fmt.Println("Suma 2:", suma)
-	// fmt.Println("Resta 2:", resta)
+	// _, mensaje := dividir2(20, 5)
+	// //fmt.Println("División 3:", resultado)
+	// fmt.Println(mensaje)
 
-	_, mensaje := dividir2(20, 5)
-	//fmt.Println("División 3:", resultado)
-	fmt.Println(mensaje)
-
-	prueba()
-
-	// Retos:
-	// -Convertidor de moneda: solesADolares(monto float64) float64
-	// -Sistema escolar: evaluarNota(nota int) string
-	// -Login reutilizable: login(usuario string, password string) bool
+	// prueba()
+	// fmt.Println("Conversión de soles a dólares:", solesADolares(100))
+	// fmt.Println("Evaluación de nota 18:", evaluarNota(18))
+	// fmt.Println("Evaluación de nota 16:", evaluarNota(16))
+	// fmt.Println("Evaluación de nota 12:", evaluarNota(12))
+	// fmt.Println("Evaluación de nota 10:", evaluarNota(10))
+	// fmt.Println("Login con usuario 'admin' y contraseña '1234':", login("admin", "1234"))
+	// fmt.Println("Login con usuario 'user' y contraseña 'abcd':", login("user", "abcd"))
 
 	// var nombre string = "Gustavo"
 	// var edad int = 30
