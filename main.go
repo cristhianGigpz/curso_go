@@ -141,8 +141,93 @@ func verSaldo() {
 func main() {
 
 	saludar("cristhian")
-	menu()
-	fmt.Println("====================fin del programa==========================")
+	//menu()
+	//fmt.Println("====================fin del programa==========================")
+	//1. Arrays, Son listas de tamaño fijo.
+	var numeros [3]int = [3]int{10, 20, 30} // declaración e inicialización
+	fmt.Println("Array de nuemros:", numeros)
+
+	var nombres [3]string
+	nombres[0] = "Gustavo"
+	nombres[1] = "Maria"
+	nombres[2] = "Juan"
+	fmt.Println("Array de nombres:", nombres)
+	fmt.Println("Primer nombre del array:", nombres[0])
+	fmt.Println("cantidad de elementos del array:", len(nombres))
+	nombres[1] = "Ana"
+	fmt.Println("Array de nombres actualizado:", nombres)
+
+	//2. Slices, Son listas dinámicas que pueden crecer o reducir su tamaño.
+	var numerosSlice []int = []int{10, 20, 30} // declaración e inicialización
+	fmt.Println("Slice de números:", numerosSlice)
+
+	numerosSlice = append(numerosSlice, 40) // Agregar un elemento al slice
+	fmt.Println("Slice de números actualizado:", numerosSlice)
+	fmt.Println("Primer número del slice:", numerosSlice[0])
+	fmt.Println("Cantidad de elementos del slice:", len(numerosSlice))
+
+	sliceNombres := []string{"Gustavo", "Maria", "Carlos"}
+	fmt.Println("Slice de nombres:", sliceNombres)
+	sliceNombres = append(sliceNombres, "Ana")
+	fmt.Println("Slice de nombres actualizado:", sliceNombres)
+
+	for i := 0; i < len(sliceNombres); i++ {
+		fmt.Println("Nombre en posición", i, ":", sliceNombres[i])
+	}
+
+	//eliminar un elemento del slice (ejemplo eliminar el segundo elemento)
+	indice := 1
+	sliceNombres = append(sliceNombres[:indice], sliceNombres[indice+1:]...)
+	fmt.Println("Slice de nombres después de eliminar el segundo elemento:", sliceNombres)
+
+	//3. maps
+	// Son colecciones de pares clave-valor, donde cada clave es única y se utiliza para acceder a su valor asociado.
+	persona := map[string]string{
+		"nombre": "Gustavo",
+		"edad":   "30",
+	}
+
+	fmt.Println("Mapa de persona:", persona)
+	fmt.Println("Nombre de la persona:", persona["nombre"])
+	fmt.Println("Edad de la persona:", persona["edad"])
+
+	persona["profesion"] = "Programador"
+	fmt.Println("Mapa de persona actualizado:", persona)
+	persona["edad"] = "31"
+	fmt.Println("Mapa de persona con edad actualizada:", persona)
+
+	delete(persona, "profesion")
+	fmt.Println("Mapa de persona después de eliminar la profesión:", persona)
+
+	//ejemplo 2
+	producto := map[string]interface{}{
+		"nombre": "Laptop",
+		"precio": 2500,
+	}
+
+	producto["stock"] = 10
+	fmt.Println("Mapa de producto:", producto)
+
+	//4. combinando slices y maps
+	estudiantes := []map[string]string{
+		{"nombre": "Gustavo", "curso": "Go"},
+		{"nombre": "Maria", "curso": "Python"},
+	}
+
+	fmt.Println("Lista de estudiantes:", estudiantes)
+	fmt.Println("Curso del primer estudiante:", estudiantes[0]["curso"], "y su nombre es:", estudiantes[0]["nombre"])
+	fmt.Println("Curso del segundo estudiante:", estudiantes[1]["curso"], "y su nombre es:", estudiantes[1]["nombre"])
+
+	estudiante := map[string]string{"nombre": "Carlos", "curso": "Java"}
+	estudiantes = append(estudiantes, estudiante)
+	fmt.Println("Lista de estudiantes actualizada:", estudiantes)
+
+	for i, est := range estudiantes {
+		fmt.Println("Estudiante en posición", i, ":", est["nombre"], "está cursando", est["curso"])
+	}
+	// fmt.Println("Primer número del array:", numeros[0])
+	// fmt.Println("Segundo número del array:", numeros[1])
+	// fmt.Println("Tercer número del array:", numeros[2])
 	// fmt.Println("Suma 1:", sumar(10, 20))
 
 	// fmt.Println("Resta 1:", restar(10, 5))
