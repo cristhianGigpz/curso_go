@@ -138,93 +138,198 @@ func verSaldo() {
 	fmt.Println("Tu saldo actual es: $", saldo)
 }
 
+// CRUD//
+// C . CREATE
+// R . READ
+// U . UPDATE
+// D . DELETE
+// CRUD EN MEMORIA
+var usuarios []map[string]string
+
+// CREAR
+func crearUsuario(nombre, email string) {
+	if nombre == "" || email == "" {
+		fmt.Println("Error: El nombre y el email no pueden estar vacíos.")
+		return
+	}
+	usuario := map[string]string{
+		"nombre": nombre,
+		"email":  email,
+	}
+	usuarios = append(usuarios, usuario)
+	fmt.Println("Usuario creado exitosamente.")
+}
+
+// LEER
+func leerUsuarios() {
+	if len(usuarios) == 0 {
+		fmt.Println("No hay usuarios registrados.")
+		return
+	}
+	fmt.Println("Lista de usuarios:")
+	for i, usuario := range usuarios {
+		fmt.Println("Usuario", i+1, ":", usuario["nombre"], usuario["email"])
+	}
+}
+
+// ACTUALIZAR
+func actualizarUsuario(indice int, nuevoNombre, nuevoEmail string) {
+	if indice < 1 || indice > len(usuarios) {
+		fmt.Println("Índice inválido.")
+		return
+	}
+	usuarios[indice-1]["nombre"] = nuevoNombre
+	usuarios[indice-1]["email"] = nuevoEmail
+	fmt.Println("Usuario actualizado exitosamente.")
+}
+
+// ELIMINAR
+func eliminarUsuario(indice int) {
+	if indice < 1 || indice > len(usuarios) {
+		fmt.Println("Índice inválido.")
+		return
+	}
+	usuarios = append(usuarios[:indice-1], usuarios[indice:]...)
+	fmt.Println("Usuario eliminado exitosamente.")
+}
+
+func crudMenu() {
+	for {
+		fmt.Println("=== Menú CRUD de Usuarios ===")
+		fmt.Println("1. Crear usuario")
+		fmt.Println("2. Leer usuarios")
+		fmt.Println("3. Actualizar usuario")
+		fmt.Println("4. Eliminar usuario")
+		fmt.Println("5. Salir")
+
+		fmt.Print("Selecciona una opción: ")
+		var opcion int
+		fmt.Scan(&opcion)
+
+		switch opcion {
+		case 1:
+			var nombre, email string
+			fmt.Print("Ingrese el nombre del usuario: ")
+			fmt.Scan(&nombre)
+			fmt.Print("Ingrese el email del usuario: ")
+			fmt.Scan(&email)
+			//validar que no este vacio el nombre y el email
+			crearUsuario(nombre, email)
+		case 2:
+			leerUsuarios()
+		case 3:
+			var indice int
+			var nuevoNombre, nuevoEmail string
+			fmt.Print("Ingrese el índice del usuario a actualizar: ")
+			fmt.Scan(&indice)
+			fmt.Print("Ingrese el nuevo nombre del usuario: ")
+			fmt.Scan(&nuevoNombre)
+			fmt.Print("Ingrese el nuevo email del usuario: ")
+			fmt.Scan(&nuevoEmail)
+			actualizarUsuario(indice, nuevoNombre, nuevoEmail)
+		case 4:
+			var indice int
+			fmt.Print("Ingrese el índice del usuario a eliminar: ")
+			fmt.Scan(&indice)
+			eliminarUsuario(indice)
+		case 5:
+			fmt.Println("Saliendo del menú CRUD de usuarios.")
+			return
+		default:
+			fmt.Println("Opción inválida. Por favor, selecciona una opción válida.")
+		}
+	}
+}
+
 func main() {
 
 	saludar("cristhian")
 	//menu()
 	//fmt.Println("====================fin del programa==========================")
-	//1. Arrays, Son listas de tamaño fijo.
-	var numeros [3]int = [3]int{10, 20, 30} // declaración e inicialización
-	fmt.Println("Array de nuemros:", numeros)
+	crudMenu()
+	// //1. Arrays, Son listas de tamaño fijo.
+	// var numeros [3]int = [3]int{10, 20, 30} // declaración e inicialización
+	// fmt.Println("Array de nuemros:", numeros)
 
-	var nombres [3]string
-	nombres[0] = "Gustavo"
-	nombres[1] = "Maria"
-	nombres[2] = "Juan"
-	fmt.Println("Array de nombres:", nombres)
-	fmt.Println("Primer nombre del array:", nombres[0])
-	fmt.Println("cantidad de elementos del array:", len(nombres))
-	nombres[1] = "Ana"
-	fmt.Println("Array de nombres actualizado:", nombres)
+	// var nombres [3]string
+	// nombres[0] = "Gustavo"
+	// nombres[1] = "Maria"
+	// nombres[2] = "Juan"
+	// fmt.Println("Array de nombres:", nombres)
+	// fmt.Println("Primer nombre del array:", nombres[0])
+	// fmt.Println("cantidad de elementos del array:", len(nombres))
+	// nombres[1] = "Ana"
+	// fmt.Println("Array de nombres actualizado:", nombres)
 
-	//2. Slices, Son listas dinámicas que pueden crecer o reducir su tamaño.
-	var numerosSlice []int = []int{10, 20, 30} // declaración e inicialización
-	fmt.Println("Slice de números:", numerosSlice)
+	// //2. Slices, Son listas dinámicas que pueden crecer o reducir su tamaño.
+	// var numerosSlice []int = []int{10, 20, 30} // declaración e inicialización
+	// fmt.Println("Slice de números:", numerosSlice)
 
-	numerosSlice = append(numerosSlice, 40) // Agregar un elemento al slice
-	fmt.Println("Slice de números actualizado:", numerosSlice)
-	fmt.Println("Primer número del slice:", numerosSlice[0])
-	fmt.Println("Cantidad de elementos del slice:", len(numerosSlice))
+	// numerosSlice = append(numerosSlice, 40) // Agregar un elemento al slice
+	// fmt.Println("Slice de números actualizado:", numerosSlice)
+	// fmt.Println("Primer número del slice:", numerosSlice[0])
+	// fmt.Println("Cantidad de elementos del slice:", len(numerosSlice))
 
-	sliceNombres := []string{"Gustavo", "Maria", "Carlos"}
-	fmt.Println("Slice de nombres:", sliceNombres)
-	sliceNombres = append(sliceNombres, "Ana")
-	fmt.Println("Slice de nombres actualizado:", sliceNombres)
+	// sliceNombres := []string{"Gustavo", "Maria", "Carlos"}
+	// fmt.Println("Slice de nombres:", sliceNombres)
+	// sliceNombres = append(sliceNombres, "Ana")
+	// fmt.Println("Slice de nombres actualizado:", sliceNombres)
 
-	for i := 0; i < len(sliceNombres); i++ {
-		fmt.Println("Nombre en posición", i, ":", sliceNombres[i])
-	}
+	// for i := 0; i < len(sliceNombres); i++ {
+	// 	fmt.Println("Nombre en posición", i, ":", sliceNombres[i])
+	// }
 
-	//eliminar un elemento del slice (ejemplo eliminar el segundo elemento)
-	indice := 1
-	sliceNombres = append(sliceNombres[:indice], sliceNombres[indice+1:]...)
-	fmt.Println("Slice de nombres después de eliminar el segundo elemento:", sliceNombres)
+	// //eliminar un elemento del slice (ejemplo eliminar el segundo elemento)
+	// indice := 1
+	// sliceNombres = append(sliceNombres[:indice], sliceNombres[indice+1:]...)
+	// fmt.Println("Slice de nombres después de eliminar el segundo elemento:", sliceNombres)
 
-	//3. maps
-	// Son colecciones de pares clave-valor, donde cada clave es única y se utiliza para acceder a su valor asociado.
-	persona := map[string]string{
-		"nombre": "Gustavo",
-		"edad":   "30",
-	}
+	// //3. maps
+	// // Son colecciones de pares clave-valor, donde cada clave es única y se utiliza para acceder a su valor asociado.
+	// persona := map[string]string{
+	// 	"nombre": "Gustavo",
+	// 	"edad":   "30",
+	// }
 
-	fmt.Println("Mapa de persona:", persona)
-	fmt.Println("Nombre de la persona:", persona["nombre"])
-	fmt.Println("Edad de la persona:", persona["edad"])
+	// fmt.Println("Mapa de persona:", persona)
+	// fmt.Println("Nombre de la persona:", persona["nombre"])
+	// fmt.Println("Edad de la persona:", persona["edad"])
 
-	persona["profesion"] = "Programador"
-	fmt.Println("Mapa de persona actualizado:", persona)
-	persona["edad"] = "31"
-	fmt.Println("Mapa de persona con edad actualizada:", persona)
+	// persona["profesion"] = "Programador"
+	// fmt.Println("Mapa de persona actualizado:", persona)
+	// persona["edad"] = "31"
+	// fmt.Println("Mapa de persona con edad actualizada:", persona)
 
-	delete(persona, "profesion")
-	fmt.Println("Mapa de persona después de eliminar la profesión:", persona)
+	// delete(persona, "profesion")
+	// fmt.Println("Mapa de persona después de eliminar la profesión:", persona)
 
-	//ejemplo 2
-	producto := map[string]interface{}{
-		"nombre": "Laptop",
-		"precio": 2500,
-	}
+	// //ejemplo 2
+	// producto := map[string]interface{}{
+	// 	"nombre": "Laptop",
+	// 	"precio": 2500,
+	// }
 
-	producto["stock"] = 10
-	fmt.Println("Mapa de producto:", producto)
+	// producto["stock"] = 10
+	// fmt.Println("Mapa de producto:", producto)
 
-	//4. combinando slices y maps
-	estudiantes := []map[string]string{
-		{"nombre": "Gustavo", "curso": "Go"},
-		{"nombre": "Maria", "curso": "Python"},
-	}
+	// //4. combinando slices y maps
+	// estudiantes := []map[string]string{
+	// 	{"nombre": "Gustavo", "curso": "Go"},
+	// 	{"nombre": "Maria", "curso": "Python"},
+	// }
 
-	fmt.Println("Lista de estudiantes:", estudiantes)
-	fmt.Println("Curso del primer estudiante:", estudiantes[0]["curso"], "y su nombre es:", estudiantes[0]["nombre"])
-	fmt.Println("Curso del segundo estudiante:", estudiantes[1]["curso"], "y su nombre es:", estudiantes[1]["nombre"])
+	// fmt.Println("Lista de estudiantes:", estudiantes)
+	// fmt.Println("Curso del primer estudiante:", estudiantes[0]["curso"], "y su nombre es:", estudiantes[0]["nombre"])
+	// fmt.Println("Curso del segundo estudiante:", estudiantes[1]["curso"], "y su nombre es:", estudiantes[1]["nombre"])
 
-	estudiante := map[string]string{"nombre": "Carlos", "curso": "Java"}
-	estudiantes = append(estudiantes, estudiante)
-	fmt.Println("Lista de estudiantes actualizada:", estudiantes)
+	// estudiante := map[string]string{"nombre": "Carlos", "curso": "Java"}
+	// estudiantes = append(estudiantes, estudiante)
+	// fmt.Println("Lista de estudiantes actualizada:", estudiantes)
 
-	for i, est := range estudiantes {
-		fmt.Println("Estudiante en posición", i, ":", est["nombre"], "está cursando", est["curso"])
-	}
+	// for i, est := range estudiantes {
+	// 	fmt.Println("Estudiante en posición", i, ":", est["nombre"], "está cursando", est["curso"])
+	// }
+
 	// fmt.Println("Primer número del array:", numeros[0])
 	// fmt.Println("Segundo número del array:", numeros[1])
 	// fmt.Println("Tercer número del array:", numeros[2])
