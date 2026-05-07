@@ -193,6 +193,17 @@ func eliminarUsuario(indice int) {
 	fmt.Println("Usuario eliminado exitosamente.")
 }
 
+// buscar usuario por nombre
+func buscarUsuario(nombre string) {
+	for i, usuario := range usuarios {
+		if usuario["nombre"] == nombre {
+			fmt.Println("Usuario encontrado en posición", i+1, ":", usuario["nombre"], usuario["email"])
+			return
+		}
+	}
+	fmt.Println("Usuario no encontrado.")
+}
+
 func crudMenu() {
 	for {
 		fmt.Println("=== Menú CRUD de Usuarios ===")
@@ -200,7 +211,8 @@ func crudMenu() {
 		fmt.Println("2. Leer usuarios")
 		fmt.Println("3. Actualizar usuario")
 		fmt.Println("4. Eliminar usuario")
-		fmt.Println("5. Salir")
+		fmt.Println("5. Buscar usuario")
+		fmt.Println("6. Salir")
 
 		fmt.Print("Selecciona una opción: ")
 		var opcion int
@@ -233,6 +245,11 @@ func crudMenu() {
 			fmt.Scan(&indice)
 			eliminarUsuario(indice)
 		case 5:
+			var nombre string
+			fmt.Print("Ingrese el nombre del usuario a buscar: ")
+			fmt.Scan(&nombre)
+			buscarUsuario(nombre)
+		case 6:
 			fmt.Println("Saliendo del menú CRUD de usuarios.")
 			return
 		default:
