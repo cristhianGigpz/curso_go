@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"strconv"
+	"strings"
 )
 
 func saludar(nombre string) {
@@ -263,7 +265,82 @@ func main() {
 	saludar("cristhian")
 	//menu()
 	//fmt.Println("====================fin del programa==========================")
-	crudMenu()
+	//crudMenu()
+	mensaje := "Hola mundo"
+
+	fmt.Println(mensaje)
+	fmt.Println(len(mensaje)) // longitud
+
+	//concatenacion
+	nombre := "Cristhian"
+	saludo := "Hola, " + nombre
+	fmt.Println(saludo)
+
+	fmt.Printf("Hola, %s\n", nombre) // formato
+
+	//paquete strings//
+	//convertir mayusculas/minusculas
+	fmt.Println(strings.ToUpper(mensaje))
+	fmt.Println(strings.ToUpper("hola mundo gigpz"))
+	fmt.Println(strings.ToLower(mensaje))
+
+	//buscar subcadena
+	fmt.Println(strings.Contains(mensaje, "mundo"))
+	fmt.Println(strings.Contains(saludo, "mundo"))
+
+	//reemplazar subcadena
+	fmt.Println(strings.ReplaceAll("hola mundo", "hola", "hi"))
+	fmt.Println(strings.ReplaceAll(saludo, "Hola", "hi"))
+
+	//eliminar espacios
+	fmt.Println(strings.TrimSpace("   hola   mundo   "))
+
+	//dividir cadena
+	fmt.Println(strings.Split("hola mundo", " "))
+	programas := strings.Split("golang,python,java", ",")
+	fmt.Println(programas)
+	fmt.Println("Primera palabra:", programas[0])
+	fmt.Println("Segunda palabra:", programas[1])
+	////ver tipo de dato
+	fmt.Printf("El tipo de dato de la variable programas es: %T\n", programas)
+	fmt.Printf("El tipo de dato de la variable saludo es: %T\n", saludo)
+
+	///////////4. Comparación de strings////////////
+	a := "hola"
+	b := "Hola"
+
+	fmt.Println(a == b) // false
+	//Para comparaciones sin importar mayúsculas.
+	fmt.Println(strings.EqualFold("Hola", "hola")) // true
+	//fmt.Println(strings.ToLower(a) == strings.ToLower(b)) // true
+
+	//recorrer string
+	texto := "Hola"
+	for i := 0; i < len(texto); i++ {
+		fmt.Println(string(texto[i]))
+	}
+
+	for _, letra := range texto {
+		fmt.Println(string(letra))
+	}
+
+	//conversion de tipos strings a numeros
+	var numeroStr string = "123"
+	//String → int
+	num, _ := strconv.Atoi(numeroStr)
+	fmt.Println("Número convertido de string:", num)
+
+	//int → string
+	numStr := strconv.Itoa(456)
+	fmt.Println("Número convertido a string:", numStr)
+
+	//ejemplo
+	textoNum := "50"
+
+	numero, _ := strconv.Atoi(textoNum)
+
+	fmt.Println(numero + 10)
+
 	// //1. Arrays, Son listas de tamaño fijo.
 	// var numeros [3]int = [3]int{10, 20, 30} // declaración e inicialización
 	// fmt.Println("Array de nuemros:", numeros)
