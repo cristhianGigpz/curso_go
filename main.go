@@ -268,6 +268,38 @@ func (u Usuario) Saludar() {
 	fmt.Println("Hola, mi nombre es", u.Nombre, "mi email es", u.Email, "y tengo", u.Edad, "años.")
 }
 
+type Animal struct {
+	Nombre  string
+	Especie string
+}
+
+func (a Animal) Comer() {
+	fmt.Println("El", a.Especie, "llamado", a.Nombre, "está comiendo.")
+}
+
+func (a Animal) EmitirSonido() {
+	fmt.Println("El", a.Especie, "llamado", a.Nombre, "está emitiendo un sonido.")
+}
+
+type Perro struct {
+	Animal
+	Raza string
+}
+
+func (p Perro) EmitirSonido() {
+	fmt.Println("El perro llamado", p.Nombre, "está ladrando: ¡Guau!")
+}
+
+type Gato struct {
+	Animal
+	Color string
+	Raza  string
+}
+
+func (g Gato) EmitirSonido() {
+	fmt.Println("El gato llamado", g.Nombre, "está maullando: ¡Miau!")
+}
+
 func main() {
 
 	saludar("cristhian")
@@ -285,6 +317,14 @@ func main() {
 	for _, usuario := range usuarios {
 		usuario.Saludar()
 	}
+
+	miPerro := Perro{Animal: Animal{Nombre: "Firulais", Especie: "Perro"}, Raza: "Labrador"}
+	miPerro.Comer()
+	miPerro.EmitirSonido()
+
+	miGato := Gato{Animal: Animal{Nombre: "Michi", Especie: "Gato"}, Color: "Negro", Raza: "Persa"}
+	miGato.Comer()
+	miGato.EmitirSonido()
 
 	// mensaje := "Hola mundo"
 
