@@ -268,6 +268,10 @@ func (u Usuario) Saludar() {
 	fmt.Println("Hola, mi nombre es", u.Nombre, "mi email es", u.Email, "y tengo", u.Edad, "años.")
 }
 
+type Sonoro interface {
+	EmitirSonido()
+}
+
 type Animal struct {
 	Nombre  string
 	Especie string
@@ -300,6 +304,10 @@ func (g Gato) EmitirSonido() {
 	fmt.Println("El gato llamado", g.Nombre, "está maullando: ¡Miau!")
 }
 
+func EmitirRuido(s Sonoro) {
+	s.EmitirSonido()
+}
+
 func main() {
 
 	saludar("cristhian")
@@ -320,11 +328,13 @@ func main() {
 
 	miPerro := Perro{Animal: Animal{Nombre: "Firulais", Especie: "Perro"}, Raza: "Labrador"}
 	miPerro.Comer()
-	miPerro.EmitirSonido()
+	//miPerro.EmitirSonido()
 
 	miGato := Gato{Animal: Animal{Nombre: "Michi", Especie: "Gato"}, Color: "Negro", Raza: "Persa"}
 	miGato.Comer()
-	miGato.EmitirSonido()
+	//miGato.EmitirSonido()
+	EmitirRuido(miPerro)
+	EmitirRuido(miGato)
 
 	// mensaje := "Hola mundo"
 
