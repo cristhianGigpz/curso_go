@@ -264,6 +264,10 @@ type Usuario struct {
 	Edad   int
 }
 
+func (u *Usuario) ActualizarNombre(nuevoNombre string) {
+	u.Nombre = nuevoNombre
+}
+
 func (u Usuario) Saludar() {
 	fmt.Println("Hola, mi nombre es", u.Nombre, "mi email es", u.Email, "y tengo", u.Edad, "años.")
 }
@@ -308,23 +312,43 @@ func EmitirRuido(s Sonoro) {
 	s.EmitirSonido()
 }
 
+func cambiar(nombre *string) {
+	*nombre = "Gustavo"
+}
+
+type Contador struct {
+	Valor int
+}
+
+func (c Contador) IncrementarCopia() {
+	c.Valor++
+}
+
+// Cambia el valor real
+func (c *Contador) IncrementarReal() {
+	c.Valor++
+}
+
 func main() {
 
 	saludar("cristhian")
-	var usuarios []Usuario
-	//menu()
-	//fmt.Println("====================fin del programa==========================")
-	//crudMenu()
-	usuario1 := Usuario{Nombre: "Gustavo", Email: "gustavo@example.com", Edad: 30}
+	// var usuarios []Usuario
+	// //menu()
+	// //fmt.Println("====================fin del programa==========================")
+	// //crudMenu()
+	// usuario1 := Usuario{Nombre: "Gustavo", Email: "gustavo@example.com", Edad: 30}
 
-	//fmt.Println("Usuario 1:", usuario1.Nombre)
-	usuarios = append(usuarios, usuario1)
-	usuarios = append(usuarios, Usuario{Nombre: "Maria", Email: "maria@example.com", Edad: 25})
-	usuarios = append(usuarios, Usuario{Nombre: "Carlos", Email: "carlos@example.com", Edad: 28})
+	// //fmt.Println("Usuario 1:", usuario1.Nombre)
+	// usuarios = append(usuarios, usuario1)
+	// usuarios = append(usuarios, Usuario{Nombre: "Maria", Email: "maria@example.com", Edad: 25})
+	// usuarios = append(usuarios, Usuario{Nombre: "Carlos", Email: "carlos@example.com", Edad: 28})
 
-	for _, usuario := range usuarios {
-		usuario.Saludar()
-	}
+	// for _, usuario := range usuarios {
+	// 	usuario.Saludar()
+	// }
+	user := Usuario{Nombre: "Gustavo", Email: "", Edad: 30}
+	user.ActualizarNombre("Gustavo Pérez")
+	user.Saludar()
 
 	miPerro := Perro{Animal: Animal{Nombre: "Firulais", Especie: "Perro"}, Raza: "Labrador"}
 	miPerro.Comer()
@@ -337,6 +361,25 @@ func main() {
 	EmitirRuido(miGato)
 
 	// mensaje := "Hola mundo"
+	nombre := "Christian"
+	// fmt.Println(nombre)
+	// //fmt.Println(&nombre)
+	// puntero := &nombre
+	// fmt.Println(puntero)
+	// fmt.Println(*puntero)
+	// *puntero = "Gustavo"
+	// fmt.Println(nombre)
+
+	cambiar(&nombre)
+	fmt.Println(nombre)
+
+	cuenta := Contador{Valor: 10}
+
+	cuenta.IncrementarCopia()
+	fmt.Println("Valor después de IncrementarCopia:", cuenta.Valor) // sigue siendo 10
+
+	cuenta.IncrementarReal()
+	fmt.Println("Valor después de IncrementarReal:", cuenta.Valor) // ahora es 11
 
 	// fmt.Println(mensaje)
 	// fmt.Println(len(mensaje)) // longitud
