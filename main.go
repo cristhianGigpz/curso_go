@@ -329,6 +329,189 @@ func (c *Contador) IncrementarReal() {
 	c.Valor++
 }
 
+// -----MINI PROYECTO DEL MÓDULO
+// 🏦 Sistema bancario con punteros
+
+// 1. Ver saldo
+// 2. Depositar
+// 3. Retirar
+// 4. Salir
+
+type Cuenta struct {
+	Saldo   float64
+	Titular string
+}
+
+func (c Cuenta) VerSaldo() {
+	fmt.Printf("El saldo de la cuenta de %s es: $%.2f\n", c.Titular, c.Saldo)
+}
+
+func (c *Cuenta) Depositar(monto float64) {
+	c.Saldo += monto
+	fmt.Printf("Depósito exitoso. Nuevo saldo de %s: $%.2f\n", c.Titular, c.Saldo)
+}
+
+func (c *Cuenta) Retirar(monto float64) {
+	if monto > c.Saldo {
+		fmt.Println("Fondos insuficientes.")
+		return
+	}
+	c.Saldo -= monto
+	fmt.Printf("Retiro exitoso. Nuevo saldo de %s: $%.2f\n", c.Titular, c.Saldo)
+}
+
+func mostrarMenuCuenta(c *Cuenta) {
+	for {
+		fmt.Println("=== Menú de Cuenta Bancaria ===")
+		fmt.Println("1. Ver saldo")
+		fmt.Println("2. Depositar")
+		fmt.Println("3. Retirar")
+		fmt.Println("4. Salir")
+		fmt.Print("Selecciona una opción: ")
+
+		var opcion int
+		fmt.Scan(&opcion)
+		switch opcion {
+		case 1:
+			c.VerSaldo()
+		case 2:
+			var monto float64
+			fmt.Print("Ingrese el monto a depositar: ")
+			fmt.Scan(&monto)
+			c.Depositar(monto)
+		case 3:
+			var monto float64
+			fmt.Print("Ingrese el monto a retirar: ")
+			fmt.Scan(&monto)
+			c.Retirar(monto)
+		case 4:
+			fmt.Println("Saliendo del menú de cuenta bancaria.")
+			return
+		default:
+			fmt.Println("Opción inválida. Por favor, selecciona una opción válida.")
+		}
+	}
+}
+
+// ---MINI PROYECTO (nivel profesional)--
+// Sistema de Inventario con Structs
+
+// 1. Agregar producto
+// 2. Listar productos
+// 3. Actualizar stock
+// 4. Eliminar producto
+// 5. Buscar producto
+// 6. Salir
+
+type Producto struct {
+	ID     int
+	Nombre string
+	Stock  int
+	Precio float64
+}
+
+var inventario []Producto
+
+func agregarProducto(nombre string, stock int, precio float64) {
+	id := len(inventario) + 1
+	producto := Producto{ID: id, Nombre: nombre, Stock: stock, Precio: precio}
+	inventario = append(inventario, producto)
+	fmt.Println("Producto Agregado")
+}
+
+func listarProductos() {
+	if len(inventario) == 0 {
+		fmt.Println("No hay productos en el inventario.")
+	}
+	fmt.Println("Inventario de productos:")
+	for _, producto := range inventario {
+		fmt.Printf("ID: %d, Nombre: %s, Stock: %d, Precio: $%.2f\n", producto.ID, producto.Nombre, producto.Stock, producto.Precio)
+	}
+}
+
+func actualizarStock(id int, nuevoStock int) {
+	for i, producto := range inventario {
+		if producto.ID == id {
+			inventario[i].Stock = nuevoStock
+			return
+		}
+	}
+	fmt.Println("Producto no encontrado.")
+}
+
+func eliminarProducto(id int) {
+	for i, producto := range inventario {
+		if producto.ID == id {
+			inventario = append(inventario[:i], inventario[i+1:]...)
+			return
+		}
+	}
+	fmt.Println("Producto no encontrado.")
+}
+
+func buscarProducto(nombre string) {
+	for _, producto := range inventario {
+		if producto.Nombre == nombre {
+			fmt.Printf("Producto encontrado: ID: %d, Nombre: %s, Stock: %d, Precio: $%.2f\n", producto.ID, producto.Nombre, producto.Stock, producto.Precio)
+			return
+		}
+	}
+	fmt.Println("Producto no encontrado.")
+}
+
+func menuInventario() {
+	for {
+		fmt.Println("=== Menú de Inventario ===")
+		fmt.Println("1. Agregar producto")
+		fmt.Println("2. Listar productos")
+		fmt.Println("3. Actualizar stock")
+		fmt.Println("4. Eliminar producto")
+		fmt.Println("5. Buscar producto")
+		fmt.Println("6. Salir")
+
+		fmt.Print("Selecciona una opción: ")
+		var opcion int
+		fmt.Scan(&opcion)
+		switch opcion {
+		case 1:
+			var nombre string
+			var stock int
+			var precio float64
+			fmt.Print("Ingrese el nombre del producto: ")
+			fmt.Scan(&nombre)
+			fmt.Print("Ingrese el stock del producto: ")
+			fmt.Scan(&stock)
+			fmt.Print("Ingrese el precio del producto: ")
+			fmt.Scan(&precio)
+			agregarProducto(nombre, stock, precio)
+		case 2:
+			listarProductos()
+		case 3:
+			var id, nuevoStock int
+			fmt.Print("Ingrese el ID del producto: ")
+			fmt.Scan(&id)
+			fmt.Print("Ingrese el nuevo stock: ")
+			fmt.Scan(&nuevoStock)
+			actualizarStock(id, nuevoStock)
+		case 4:
+			var id int
+			fmt.Print("Ingrese el ID del producto: ")
+			fmt.Scan(&id)
+			eliminarProducto(id)
+		case 5:
+			var nombre string
+			fmt.Print("Ingrese el nombre del producto: ")
+			fmt.Scan(&nombre)
+			buscarProducto(nombre)
+		case 6:
+			fmt.Println("Saliendo del menú de inventario.")
+			return
+		default:
+			fmt.Println("Opción inválida. Por favor, selecciona una opción válida.")
+		}
+	}
+}
+
 func main() {
 
 	saludar("cristhian")
@@ -373,13 +556,16 @@ func main() {
 	cambiar(&nombre)
 	fmt.Println(nombre)
 
-	cuenta := Contador{Valor: 10}
+	//mostrarMenuCuenta(&Cuenta{Saldo: 1000.00, Titular: "Gustavo Pérez"})
+	menuInventario()
 
-	cuenta.IncrementarCopia()
-	fmt.Println("Valor después de IncrementarCopia:", cuenta.Valor) // sigue siendo 10
+	// cuenta := Contador{Valor: 10}
 
-	cuenta.IncrementarReal()
-	fmt.Println("Valor después de IncrementarReal:", cuenta.Valor) // ahora es 11
+	// cuenta.IncrementarCopia()
+	// fmt.Println("Valor después de IncrementarCopia:", cuenta.Valor) // sigue siendo 10
+
+	// cuenta.IncrementarReal()
+	// fmt.Println("Valor después de IncrementarReal:", cuenta.Valor) // ahora es 11
 
 	// fmt.Println(mensaje)
 	// fmt.Println(len(mensaje)) // longitud
