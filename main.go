@@ -1,7 +1,9 @@
 package main
 
 import (
+	"errors"
 	"fmt"
+	"strconv"
 )
 
 func saludar(nombre string) {
@@ -32,11 +34,11 @@ func operaciones(a, b int) (int, int) {
 	return a + b, a - b
 }
 
-func dividir2(a, b float64) (float64, string) {
+func dividir2(a, b float64) (float64, error) {
 	if b == 0 {
-		return 0, "Error: No se puede dividir por cero."
+		return 0, errors.New("Error: No se puede dividir por cero.")
 	}
-	return a / b, "División exitosa"
+	return a / b, nil
 }
 
 var x int = 10
@@ -512,6 +514,59 @@ func menuInventario() {
 	}
 }
 
+func obtenerUsuario(id int) (string, error) {
+
+	if id == 0 {
+		return "", errors.New("usuario no encontrado")
+	}
+
+	return "Christian", nil
+}
+
+func crearUsuarioError(nombre string) error {
+	if nombre == "" {
+		return errors.New("el nombre es obligatorio")
+	}
+	return nil
+}
+
+type SaldoError struct {
+	Mensaje string
+}
+
+func (e SaldoError) Error() string {
+	return e.Mensaje
+}
+
+func retirarError(saldo float64, monto float64) (float64, error) {
+
+	if monto > saldo {
+		return saldo, SaldoError{
+			Mensaje: "saldo insuficiente",
+		}
+	}
+
+	return saldo - monto, nil
+}
+
+type MiErrorDeConexion struct {
+	Codigo int
+	Msg    string
+}
+
+// Implementas la interfaz 'error'
+func (e MiErrorDeConexion) Error() string {
+	return fmt.Sprintf("[%d] %s", e.Codigo, e.Msg)
+}
+
+func conexionBd(cadena string) error {
+	// Simulación de conexión a la base de datos
+	if cadena == "" {
+		return MiErrorDeConexion{Codigo: 500, Msg: "Cadena de conexión vacía"}
+	}
+	return nil
+}
+
 func main() {
 
 	saludar("cristhian")
@@ -556,8 +611,40 @@ func main() {
 	cambiar(&nombre)
 	fmt.Println(nombre)
 
+	fmt.Println(obtenerUsuario(0))
+
+	err := crearUsuarioError("")
+	if err != nil {
+		fmt.Println("Error al crear usuario:", err)
+	}
+
+	// saldo, err := retirarError(100, 200)
+	// if err != nil {
+	// 	fmt.Println("Error:", err)
+	// 	return
+	// }
+	// fmt.Println("Nuevo saldo:", saldo)
+
+	err2 := conexionBd("")
+	if err2 != nil {
+		fmt.Println("Error de conexión:", err2)
+	}
+
+	// resultado, err := dividir2(20, 0)
+	// if err != nil {
+	// 	fmt.Println("Error:", err)
+	// 	return
+	// }
+	// fmt.Println("Resultado:", resultado)
+
+	numero, err := strconv.Atoi("abc")
+	if err != nil {
+		fmt.Println("Número inválido")
+	}
+	fmt.Println("Número convertido:", numero)
+
 	//mostrarMenuCuenta(&Cuenta{Saldo: 1000.00, Titular: "Gustavo Pérez"})
-	menuInventario()
+	//menuInventario()
 
 	// cuenta := Contador{Valor: 10}
 
