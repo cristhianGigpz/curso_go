@@ -1,45 +1,15 @@
 package main
 
 import (
+	"curso-go-basico/operaciones"
+	"curso-go-basico/saludos"
 	"errors"
 	"fmt"
+	"math"
 	"strconv"
+	"strings"
+	"time"
 )
-
-func saludar(nombre string) {
-	fmt.Println("Hola", nombre, "bienvenido a Go!")
-}
-
-func sumar(a, b int) int {
-	return a + b
-}
-
-func restar(a, b int) int {
-	return a - b
-}
-
-func multiplicar(a, b int) int {
-	return a * b
-}
-
-func dividir(a, b float64) float64 {
-	if b == 0 {
-		fmt.Println("Error: No se puede dividir por cero.")
-		return 0
-	}
-	return a / b
-}
-
-func operaciones(a, b int) (int, int) {
-	return a + b, a - b
-}
-
-func dividir2(a, b float64) (float64, error) {
-	if b == 0 {
-		return 0, errors.New("Error: No se puede dividir por cero.")
-	}
-	return a / b, nil
-}
 
 var x int = 10
 var y int = 20
@@ -569,7 +539,30 @@ func conexionBd(cadena string) error {
 
 func main() {
 
-	saludar("cristhian")
+	saludos.Saludar("cristhian")
+
+	//fmt: Imprimir y leer datos.
+	fmt.Println("Hola")
+	//-math: Operaciones matemáticas.
+	fmt.Println(math.Sqrt(25))
+	//strconv: Conversión de tipos.
+	numero, _ := strconv.Atoi("123")
+	fmt.Println(numero)
+	//strings: Manejo de texto.
+	strings.ToUpper("hola")
+	//time: Fechas y horas.
+	fmt.Println(time.Now())
+
+	fmt.Println(operaciones.Sumar(10, 20))
+	fmt.Println(operaciones.Restar(50, 20))
+	fmt.Println(operaciones.Multiplicar(5, 5))
+	fmt.Println(operaciones.Dividir(10.8, 2))
+	resultado, err := operaciones.Dividir2(20, 0)
+	if err != nil {
+		fmt.Println("Error:", err)
+	} else {
+		fmt.Println("Resultado:", resultado)
+	}
 	// var usuarios []Usuario
 	// //menu()
 	// //fmt.Println("====================fin del programa==========================")
@@ -584,22 +577,22 @@ func main() {
 	// for _, usuario := range usuarios {
 	// 	usuario.Saludar()
 	// }
-	user := Usuario{Nombre: "Gustavo", Email: "", Edad: 30}
-	user.ActualizarNombre("Gustavo Pérez")
-	user.Saludar()
+	// user := Usuario{Nombre: "Gustavo", Email: "", Edad: 30}
+	// user.ActualizarNombre("Gustavo Pérez")
+	// user.Saludar()
 
-	miPerro := Perro{Animal: Animal{Nombre: "Firulais", Especie: "Perro"}, Raza: "Labrador"}
-	miPerro.Comer()
-	//miPerro.EmitirSonido()
+	// miPerro := Perro{Animal: Animal{Nombre: "Firulais", Especie: "Perro"}, Raza: "Labrador"}
+	// miPerro.Comer()
+	// //miPerro.EmitirSonido()
 
-	miGato := Gato{Animal: Animal{Nombre: "Michi", Especie: "Gato"}, Color: "Negro", Raza: "Persa"}
-	miGato.Comer()
-	//miGato.EmitirSonido()
-	EmitirRuido(miPerro)
-	EmitirRuido(miGato)
+	// miGato := Gato{Animal: Animal{Nombre: "Michi", Especie: "Gato"}, Color: "Negro", Raza: "Persa"}
+	// miGato.Comer()
+	// //miGato.EmitirSonido()
+	// EmitirRuido(miPerro)
+	// EmitirRuido(miGato)
 
 	// mensaje := "Hola mundo"
-	nombre := "Christian"
+	//nombre := "Christian"
 	// fmt.Println(nombre)
 	// //fmt.Println(&nombre)
 	// puntero := &nombre
@@ -608,15 +601,15 @@ func main() {
 	// *puntero = "Gustavo"
 	// fmt.Println(nombre)
 
-	cambiar(&nombre)
-	fmt.Println(nombre)
+	// cambiar(&nombre)
+	// fmt.Println(nombre)
 
-	fmt.Println(obtenerUsuario(0))
+	// fmt.Println(obtenerUsuario(0))
 
-	err := crearUsuarioError("")
-	if err != nil {
-		fmt.Println("Error al crear usuario:", err)
-	}
+	// err := crearUsuarioError("")
+	// if err != nil {
+	// 	fmt.Println("Error al crear usuario:", err)
+	// }
 
 	// saldo, err := retirarError(100, 200)
 	// if err != nil {
@@ -625,10 +618,10 @@ func main() {
 	// }
 	// fmt.Println("Nuevo saldo:", saldo)
 
-	err2 := conexionBd("")
-	if err2 != nil {
-		fmt.Println("Error de conexión:", err2)
-	}
+	// err2 := conexionBd("")
+	// if err2 != nil {
+	// 	fmt.Println("Error de conexión:", err2)
+	// }
 
 	// resultado, err := dividir2(20, 0)
 	// if err != nil {
@@ -637,11 +630,11 @@ func main() {
 	// }
 	// fmt.Println("Resultado:", resultado)
 
-	numero, err := strconv.Atoi("abc")
-	if err != nil {
-		fmt.Println("Número inválido")
-	}
-	fmt.Println("Número convertido:", numero)
+	// numero, err := strconv.Atoi("abc")
+	// if err != nil {
+	// 	fmt.Println("Número inválido")
+	// }
+	// fmt.Println("Número convertido:", numero)
 
 	//mostrarMenuCuenta(&Cuenta{Saldo: 1000.00, Titular: "Gustavo Pérez"})
 	//menuInventario()
