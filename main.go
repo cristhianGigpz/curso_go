@@ -537,9 +537,27 @@ func conexionBd(cadena string) error {
 	return nil
 }
 
+func cocinar() {
+	fmt.Println("Cocinando...")
+}
+func lavarPlatos() {
+	fmt.Println("Lavando platos...")
+}
+
+func tarea(nombre string) {
+	for i := 1; i <= 3; i++ {
+		fmt.Println(nombre, i)
+		time.Sleep(time.Millisecond * 500)
+	}
+}
+
 func main() {
 
 	saludos.Saludar("cristhian")
+
+	// go cocinar()
+	// go lavarPlatos()
+	// time.Sleep(2 * time.Second) // Espera para que las goroutines terminen
 
 	//fmt: Imprimir y leer datos.
 	fmt.Println("Hola")
@@ -563,6 +581,11 @@ func main() {
 	} else {
 		fmt.Println("Resultado:", resultado)
 	}
+
+	go tarea("A")
+	go tarea("B")
+	time.Sleep(3 * time.Second) // Espera para que las goroutines terminen
+
 	// var usuarios []Usuario
 	// //menu()
 	// //fmt.Println("====================fin del programa==========================")
